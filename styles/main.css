@@ -17,7 +17,7 @@ body{
 	margin: 10px;
 }
 #audio-controls{
-	margin-left: 3%;
+	margin-left: 3px;
 }
 #audio-controls button{
 	border:none;
@@ -25,12 +25,35 @@ body{
 	outline: none;
 	display: block;
 	float: left;
+	margin: 5px; 
 }
 #audio-controls input{
 	outline: none;
 	display: block;
 	float: left;
 }
-#playpausebtn{
-	background: url(images/PlayButton.png) no-repeat;
+#prevbtn{
+	background: url(../images/PrevButton.png) no-repeat;
+	background-size: 100% 100%;
+	height: 35px;
+	width: 70px;
 }
+#playpausebtn{
+	background: url(../images/PlayButton.png) no-repeat;
+	background-size: 100% 100%;
+	height: 70px;
+	width: 70px;
+}
+#nextbtn{
+	background: url(../images/NextButton.png) no-repeat;
+	background-size: 100% 100%;
+	height: 35px;
+	width: 70px;
+}
+#mutebtn{
+	background: url(../images/MuteButton.png) no-repeat;
+	background-size: 100% 100%;
+	height: 35px;
+	width: 50px;
+}
+
