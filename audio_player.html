@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Michael Dryburgh">
 <title>Audio Player</title>
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+	<div class="audio-player">
+		<div id="audio-controls">
+			<button id="prevbtn"></button>
+			<button id="playpausebtn"></button>
+			<button id="nextbtn"></button>
+			<button id="mutebtn"></button>
+			<input id="volumeslider" type="range" min="0" max="100" value="100" step="1">
+			<input id="seekslider" type="range" min="0" max="100" value="0" step="1">
+			<canvas id="oscilloscope"></canvas>
+		</div>		
+	</div>
 
 <script type="text/javascript" src="scripts/main.js"></script>
 </body>
