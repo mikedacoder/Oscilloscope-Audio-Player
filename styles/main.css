@@ -10,7 +10,7 @@ body{
 .audio-player{
 	display: block;
 	width: 600px;
-	height: 240px;
+	height: 270px;
 	background: linear-gradient(#333, #000);
 	border-radius: 5px;
 	padding: 10px;
@@ -60,15 +60,25 @@ body{
 	margin: 20px 5px 5px 5px;
 }
 #volumeslider{
-	width: 287px;
+	width: 286px;
 	margin: 35px 5px 5px 5px;
 }
-#seekslider{
-	width: 477px;
-	margin: 10px 5px 5px 5px;
+#currTrack{
+	margin: 5px 5px 5px 1px;
+	padding: 3px;
+	clear: both;
+	width: 98.25%;
+	height: 20px;
+	background: #000;
+	border-bottom: #444 1px solid;
+	text-align: center;
+	color: rgb(57, 255, 20);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	border-radius: 5px;
 }
 #timebox{
-	margin: 5px;
+	margin: 5px 5px 5px 1px;
 	clear: both;
 	float: left;
 	width: 100px;
@@ -78,6 +88,11 @@ body{
 	color: rgb(57, 255, 20);
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	border-radius: 5px;
+}
+#seekslider{
+	width: 481px;
+	margin: 10px 5px 5px 5px;
 }
 input[type='range']{
 	-webkit-appearance: none!important;	
@@ -120,7 +135,7 @@ input[type='range']::-ms-thumb{
 	cursor: pointer;
 }
 #oscilloscope{
-	height: 125px;
+	height: 127px;
 	width: 99.5%;
 	background: #000;
 	border-bottom: #444 1px solid;	

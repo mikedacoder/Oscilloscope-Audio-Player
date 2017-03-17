@@ -25,11 +25,13 @@ function initAudioPlayer() {
 	var volumeslider = document.getElementById("volumeslider");
 	var seekslider = document.getElementById("seekslider");
 	var currtime = document.getElementById("currtime");
-	var durationtime = document.getElementById("durationtime");	
+	var durationtime = document.getElementById("durationtime");
+	var currTrackName = document.getElementById("currTrackName");
 	
 	//Audio Object
 	var audio = new Audio();
 	audio.src = dir + playlist[playlist_index] + ext;
+	currTrackName.innerHTML = playlist[playlist_index];
 	audio.pause();
 	
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
@@ -59,6 +61,7 @@ function initAudioPlayer() {
 	audio.addEventListener("timeupdate", function(){ seekTimeUpdate(); });
 	prevbtn.addEventListener("click", prevTrack);
 	nextbtn.addEventListener("click", nextTrack);
+	audio.addEventListener("ended", function() { nextTrack() });
 	
 	//Play and pause the audio
 	function playPause() {
@@ -124,6 +127,7 @@ function initAudioPlayer() {
 			playlist_index--;
 		}
 		audio.src = dir + playlist[playlist_index] + ext;
+		currTrackName.innerHTML = playlist[playlist_index];
 		audio.currentTime = 0;
 		console.log(playlist[playlist_index]);
 		if(audio.paused) {
@@ -141,6 +145,7 @@ function initAudioPlayer() {
 			playlist_index++;
 		}
 		audio.src = dir + playlist[playlist_index] + ext;
+		currTrackName.innerHTML = playlist[playlist_index];
 		audio.currentTime = 0;
 		console.log(playlist[playlist_index]);
 		if(audio.paused) {
@@ -159,7 +164,7 @@ function initAudioPlayer() {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 		ctx.lineWidth = 2;
-		ctx.strokeStyle = 'rgb(57, 255, 20)';
+		ctx.strokeStyle = 'rgb(204, 51, 255)';
 
 		ctx.beginPath();
 
