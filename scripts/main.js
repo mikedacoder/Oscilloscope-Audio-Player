@@ -15,7 +15,7 @@ function initAudioPlayer() {
 			"Tenor1_There_Will_Be_Rest", 
 			"Tenor2_There_Will_Be_Rest"
 			];
-	var seeking;
+	var seeking;	
 	
 	//Set object references
 	var playbtn = document.getElementById("playpausebtn");
@@ -25,12 +25,29 @@ function initAudioPlayer() {
 	var volumeslider = document.getElementById("volumeslider");
 	var seekslider = document.getElementById("seekslider");
 	var currtime = document.getElementById("currtime");
-	var durationtime = document.getElementById("durationtime");
+	var durationtime = document.getElementById("durationtime");	
 	
 	//Audio Object
 	var audio = new Audio();
 	audio.src = dir + playlist[playlist_index] + ext;
 	audio.pause();
+	
+	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+	var analyser = audioCtx.createAnalyser();
+	var source = audioCtx.createMediaElementSource(audio);
+	
+	analyser.fftSize = 2048;
+	var bufferLength = analyser.frequencyBinCount;
+	var dataArray = new Uint8Array(bufferLength);
+	console.log(dataArray);
+	analyser.getByteTimeDomainData(dataArray);
+	
+	// Get a canvas defined with ID "oscilloscope"
+	var canvas = document.getElementById("oscilloscope");
+	var ctx = canvas.getContext("2d"); 
+	
+	source.connect(analyser);
+	analyser.connect(audioCtx.destination);		
 	
 	//Add event handlers
 	playbtn.addEventListener("click", playPause);
@@ -132,5 +149,42 @@ function initAudioPlayer() {
 			audio.play();
 		}		
 	}
+	
+	function draw() {
+		drawVisual = requestAnimationFrame(draw);
+		
+		analyser.getByteTimeDomainData(dataArray);
+		
+		ctx.fillStyle = 'rgb(0, 0, 0)';
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = 'rgb(57, 255, 20)';
+
+		ctx.beginPath();
+
+		var sliceWidth = canvas.width * 1.0 / bufferLength;
+		var x = 0;
+
+		for (var i = 0; i < bufferLength; i++) {
+
+			var v = dataArray[i] / 128.0;
+			var y = v * canvas.height / 2;
+
+			if (i === 0) {
+				ctx.moveTo(x, y);
+			} else {
+				ctx.lineTo(x, y);
+			}
+
+			x += sliceWidth;
+		}
+
+		ctx.lineTo(canvas.width, canvas.height / 2);
+		ctx.stroke();
+	}
+	
+	//Draw oscilloscope
+	draw();
 	
 }
