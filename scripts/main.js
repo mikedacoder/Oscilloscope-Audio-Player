@@ -15,7 +15,8 @@ function initAudioPlayer() {
 			"Tenor1_There_Will_Be_Rest", 
 			"Tenor2_There_Will_Be_Rest"
 			];
-	var seeking;	
+	var seeking;
+	var playing = false;
 	
 	//Set object references
 	var playbtn = document.getElementById("playpausebtn");
@@ -40,8 +41,7 @@ function initAudioPlayer() {
 	
 	analyser.fftSize = 2048;
 	var bufferLength = analyser.frequencyBinCount;
-	var dataArray = new Uint8Array(bufferLength);
-	console.log(dataArray);
+	var dataArray = new Uint8Array(bufferLength);	
 	analyser.getByteTimeDomainData(dataArray);
 	
 	// Get a canvas defined with ID "oscilloscope"
@@ -60,17 +60,19 @@ function initAudioPlayer() {
 	seekslider.addEventListener("mouseup", function(){ seeking = false; });
 	audio.addEventListener("timeupdate", function(){ seekTimeUpdate(); });
 	prevbtn.addEventListener("click", prevTrack);
-	nextbtn.addEventListener("click", nextTrack);
-	audio.addEventListener("ended", function() { nextTrack() });
+	nextbtn.addEventListener("click", function() { nextTrack(); });
+	audio.addEventListener("ended", function() { nextTrack(); });
 	
 	//Play and pause the audio
 	function playPause() {
 		if(audio.paused) {
 			audio.play();
+			playing = true;
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
 		} else {
 			audio.pause();
+			playing = false;
 			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
 		}
@@ -128,12 +130,17 @@ function initAudioPlayer() {
 		}
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
-		audio.currentTime = 0;
-		console.log(playlist[playlist_index]);
-		if(audio.paused) {
+		audio.currentTime = 0;		
+		//durationtime.innerHTML = "00:00";
+		
+		if(playing === false) {
 			audio.pause();
+			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";
 		} else {
 			audio.play();
+			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";			
 		}		
 	}
 	
@@ -146,17 +153,25 @@ function initAudioPlayer() {
 		}
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
-		audio.currentTime = 0;
-		console.log(playlist[playlist_index]);
-		if(audio.paused) {
+		audio.currentTime = 0;		
+		//seekTimeUpdate();
+		//durationtime.innerHTML = "00:00";
+		//audio.play();
+		
+		if(playing === false) {
 			audio.pause();
+			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";
 		} else {
 			audio.play();
+			console.log(audio.duration);
+			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";	
 		}		
 	}
 	
 	function draw() {
-		drawVisual = requestAnimationFrame(draw);
+		var drawVisual = requestAnimationFrame(draw);
 		
 		analyser.getByteTimeDomainData(dataArray);
 		
