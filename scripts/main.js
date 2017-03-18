@@ -63,6 +63,9 @@ function initAudioPlayer() {
 	nextbtn.addEventListener("click", function() { nextTrack(); });
 	audio.addEventListener("ended", function() { nextTrack(); });
 	
+	//Draw oscilloscope
+	draw();
+	
 	//Play and pause the audio
 	function playPause() {
 		if(audio.paused) {
@@ -108,6 +111,7 @@ function initAudioPlayer() {
 	// Keep the displayed time current
 	function seekTimeUpdate() {
 		var nt = audio.currentTime * (100 / audio.duration);
+		console.log('nt:', nt);
 		seekslider.value = nt;
 		var curmins = Math.floor(audio.currentTime / 60);
 		var cursecs = Math.floor(audio.currentTime - curmins * 60);
@@ -118,7 +122,11 @@ function initAudioPlayer() {
 		if(curmins < 10) { curmins = "0" + curmins; }
 		if(durmins < 10) { durmins = "0" + durmins; }
 		currtime.innerHTML = curmins + ":" + cursecs;
-		durationtime.innerHTML = durmins + ":" + dursecs;
+		if(isNaN(audio.duration)){
+			durationtime.innerHTML = "00:00";
+		} else {
+			durationtime.innerHTML = durmins + ":" + dursecs;
+		}
 	}
 	
 	//Switch to the previous track
@@ -131,7 +139,6 @@ function initAudioPlayer() {
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
 		audio.currentTime = 0;		
-		//durationtime.innerHTML = "00:00";
 		
 		if(playing === false) {
 			audio.pause();
@@ -154,17 +161,13 @@ function initAudioPlayer() {
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
 		audio.currentTime = 0;		
-		//seekTimeUpdate();
-		//durationtime.innerHTML = "00:00";
-		//audio.play();
-		
+				
 		if(playing === false) {
 			audio.pause();
 			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
 		} else {
-			audio.play();
-			console.log(audio.duration);
+			audio.play();			
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";	
 		}		
@@ -202,9 +205,6 @@ function initAudioPlayer() {
 
 		ctx.lineTo(canvas.width, canvas.height / 2);
 		ctx.stroke();
-	}
-	
-	//Draw oscilloscope
-	draw();
+	}	
 	
 }
