@@ -73,11 +73,13 @@ function initAudioPlayer() {
 			playing = true;
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
+			playbtn.title = "Pause";
 		} else {
 			audio.pause();
 			playing = false;
 			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
+			playbtn.title = "Play current track";
 		}
 	}
 	
@@ -92,10 +94,12 @@ function initAudioPlayer() {
 			audio.muted = false;
 			mutebtn.style.background = "url(images/MuteButton.png) no-repeat";
 			mutebtn.style.backgroundSize = "100% 100%";
+			mutebtn.title = "Mute";
 		} else {
 			audio.muted = true;
 			mutebtn.style.background = "url(images/UnMuteButton.png) no-repeat";
 			mutebtn.style.backgroundSize = "100% 100%";
+			mutebtn.title = "Unmute";
 		}
 	}
 	
