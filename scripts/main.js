@@ -4,9 +4,9 @@ window.addEventListener("load", initAudioPlayer);
 //Create audio player functionality
 function initAudioPlayer() {
 	var dir = "audio/";
-	var ext = ".mp3";
-	var playlist_index = 0;
-	var playlist = [
+	//var ext = ".mp3";
+	var playlist_index = 0;	
+	/*var playlist = [
 			"Blister in the Sun", 
 			"Hard to Handle", 
 			"I Love Rock N' Roll",			
@@ -17,7 +17,7 @@ function initAudioPlayer() {
 			"You Shook Me All Night Long",
 			"Nothing Else Matters", 
 			"How Will I Laugh Tomorrow"
-			];
+			];*/
 	var seeking;
 	var playing = false;
 	
@@ -37,8 +37,8 @@ function initAudioPlayer() {
 	
 	//Audio Object
 	var audio = new Audio();
-	audio.src = dir + playlist[playlist_index] + ext;	
-	currTrackName.innerHTML = playlist[playlist_index];
+	audio.src = dir + playlist[playlist_index];	
+	currTrackName.innerHTML = playlist[playlist_index].slice(0, -4);
 	audio.pause(); // Make sure audio does not start automatically
 	//Update title attributes to say what the previous and next tracks are/were.
 	nextPrevTitleUpdate();
@@ -150,8 +150,8 @@ function initAudioPlayer() {
 		} else {
 			playlist_index--;
 		}		
-		audio.src = dir + playlist[playlist_index] + ext;
-		currTrackName.innerHTML = playlist[playlist_index];
+		audio.src = dir + playlist[playlist_index];
+		currTrackName.innerHTML = playlist[playlist_index].slice(0, -4);
 		nextPrevTitleUpdate();
 		audio.currentTime = 0;		
 		
@@ -173,8 +173,8 @@ function initAudioPlayer() {
 		} else {
 			playlist_index++;
 		}
-		audio.src = dir + playlist[playlist_index] + ext;
-		currTrackName.innerHTML = playlist[playlist_index];
+		audio.src = dir + playlist[playlist_index];
+		currTrackName.innerHTML = playlist[playlist_index].slice(0, -4);
 		nextPrevTitleUpdate();
 		audio.currentTime = 0;		
 				
@@ -192,14 +192,14 @@ function initAudioPlayer() {
 	//Update title attributes to say what the previous and next tracks are/were.
 	function nextPrevTitleUpdate() {
 		if(playlist_index === 0) {
-			prevbtn.title = "Previous Track: " + (playlist[playlist.length - 1]);
-			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1]);
+			prevbtn.title = "Previous Track: " + (playlist[playlist.length - 1].slice(0, -4));
+			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1].slice(0, -4));
 		} else if(playlist_index === (playlist.length - 1)) {
-			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1]);
-			nextbtn.title = "Next Track: " + (playlist[0]);
+			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1].slice(0, -4));
+			nextbtn.title = "Next Track: " + (playlist[0].slice(0, -4));
 		} else {
-			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1]);
-			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1]);
+			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1].slice(0, -4));
+			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1].slice(0, -4));
 		}
 	}
 	
