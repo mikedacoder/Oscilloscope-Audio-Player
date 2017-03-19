@@ -1,19 +1,22 @@
 // JavaScript Document
 window.addEventListener("load", initAudioPlayer);
 
+//Create audio player functionality
 function initAudioPlayer() {
 	var dir = "audio/";
 	var ext = ".mp3";
 	var playlist_index = 0;
 	var playlist = [
-			"Alto1_There_Will_Be_Rest", 
-			"Alto2_There_Will_Be_Rest", 
-			"Bass1_There_Will_Be_Rest", 
-			"Bass2_There_Will_Be_Rest",
-			"Soprano1_There_Will_Be_Rest", 
-			"Soprano2_There_Will_Be_Rest", 
-			"Tenor1_There_Will_Be_Rest", 
-			"Tenor2_There_Will_Be_Rest"
+			"Blister in the Sun", 
+			"Hard to Handle", 
+			"I Love Rock N' Roll",			
+			"Sharp Dressed Man", 
+			"The Boys Are Back in Town",
+			"She Talks to Angels",
+			"Legs",
+			"You Shook Me All Night Long",
+			"Nothing Else Matters", 
+			"How Will I Laugh Tomorrow"
 			];
 	var seeking;
 	var playing = false;
@@ -29,12 +32,18 @@ function initAudioPlayer() {
 	var durationtime = document.getElementById("durationtime");
 	var currTrackName = document.getElementById("currTrackName");
 	
+	//Get the width of the seek slider (so math is correct)	
+	var seekSliderWidth = seekslider.offsetWidth;	
+	
 	//Audio Object
 	var audio = new Audio();
-	audio.src = dir + playlist[playlist_index] + ext;
+	audio.src = dir + playlist[playlist_index] + ext;	
 	currTrackName.innerHTML = playlist[playlist_index];
-	audio.pause();
+	audio.pause(); // Make sure audio does not start automatically
+	//Update title attributes to say what the previous and next tracks are/were.
+	nextPrevTitleUpdate();
 	
+	//Create AnalyserNode
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 	var analyser = audioCtx.createAnalyser();
 	var source = audioCtx.createMediaElementSource(audio);
@@ -48,17 +57,18 @@ function initAudioPlayer() {
 	var canvas = document.getElementById("oscilloscope");
 	var ctx = canvas.getContext("2d"); 
 	
+	//Connect AnalyserNode to audio
 	source.connect(analyser);
 	analyser.connect(audioCtx.destination);		
 	
 	//Add event handlers
 	playbtn.addEventListener("click", playPause);
 	volumeslider.addEventListener("mousemove", setVolume);
-	mutebtn.addEventListener("click", mute);
+	mutebtn.addEventListener("click", mute);	
 	seekslider.addEventListener("mousedown", function(event){ seeking = true; seek(event); });
 	seekslider.addEventListener("mousemove", function(event){ seek(event); });
 	seekslider.addEventListener("mouseup", function(){ seeking = false; });
-	audio.addEventListener("timeupdate", function(){ seekTimeUpdate(); });
+	audio.addEventListener("timeupdate", function(){ seekTimeUpdate(); });	
 	prevbtn.addEventListener("click", prevTrack);
 	nextbtn.addEventListener("click", function() { nextTrack(); });
 	audio.addEventListener("ended", function() { nextTrack(); });
@@ -69,7 +79,7 @@ function initAudioPlayer() {
 	//Play and pause the audio
 	function playPause() {
 		if(audio.paused) {
-			audio.play();
+			audio.play();			
 			playing = true;
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";
@@ -101,22 +111,22 @@ function initAudioPlayer() {
 			mutebtn.style.backgroundSize = "100% 100%";
 			mutebtn.title = "Unmute";
 		}
-	}
+	}	
 	
-	//Seek - Not working correctly
+	 //Seek - Not working correctly
 	function seek(event) {
-		if(seeking){
-			seekslider.value = event.clientX - seekslider.offsetLeft;
-			var seekto = audio.duration * (seekslider.value / 100);
+		if(seeking){						
+			seekslider.value = event.clientX - seekslider.offsetLeft;			
+			var seekto = audio.duration * (seekslider.value / seekSliderWidth);
+			console.log("Seek to: " + seekto);
 			audio.currentTime = seekto;
 		}
-	}
+	} 
 	
 	// Keep the displayed time current
 	function seekTimeUpdate() {
-		var nt = audio.currentTime * (100 / audio.duration);
-		console.log('nt:', nt);
-		seekslider.value = nt;
+		var newTime = audio.currentTime * (seekSliderWidth / audio.duration);		
+		seekslider.value = newTime;
 		var curmins = Math.floor(audio.currentTime / 60);
 		var cursecs = Math.floor(audio.currentTime - curmins * 60);
 		var durmins = Math.floor(audio.duration / 60);
@@ -139,9 +149,10 @@ function initAudioPlayer() {
 			playlist_index = (playlist.length - 1);
 		} else {
 			playlist_index--;
-		}
+		}		
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
+		nextPrevTitleUpdate();
 		audio.currentTime = 0;		
 		
 		if(playing === false) {
@@ -164,6 +175,7 @@ function initAudioPlayer() {
 		}
 		audio.src = dir + playlist[playlist_index] + ext;
 		currTrackName.innerHTML = playlist[playlist_index];
+		nextPrevTitleUpdate();
 		audio.currentTime = 0;		
 				
 		if(playing === false) {
@@ -177,6 +189,21 @@ function initAudioPlayer() {
 		}		
 	}
 	
+	//Update title attributes to say what the previous and next tracks are/were.
+	function nextPrevTitleUpdate() {
+		if(playlist_index === 0) {
+			prevbtn.title = "Previous Track: " + (playlist[playlist.length - 1]);
+			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1]);
+		} else if(playlist_index === (playlist.length - 1)) {
+			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1]);
+			nextbtn.title = "Next Track: " + (playlist[0]);
+		} else {
+			prevbtn.title = "Next Track: " + (playlist[playlist_index - 1]);
+			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1]);
+		}
+	}
+	
+	//Draw oscilloscope
 	function draw() {
 		var drawVisual = requestAnimationFrame(draw);
 		
