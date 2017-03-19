@@ -198,7 +198,7 @@ function initAudioPlayer() {
 			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1]);
 			nextbtn.title = "Next Track: " + (playlist[0]);
 		} else {
-			prevbtn.title = "Next Track: " + (playlist[playlist_index - 1]);
+			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1]);
 			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1]);
 		}
 	}
