@@ -1,8 +1,11 @@
 // JavaScript Document
 window.addEventListener("load", initAudioPlayer);
 
+
+
 //Create audio player functionality
-function initAudioPlayer() {
+function initAudioPlayer() {	
+	
 	var dir = "audio/";
 	//var ext = ".mp3";
 	var playlist_index = 0;	
@@ -33,7 +36,7 @@ function initAudioPlayer() {
 	var currTrackName = document.getElementById("currTrackName");
 	
 	//Get the width of the seek slider (so math is correct)	
-	var seekSliderWidth = seekslider.offsetWidth;	
+	var seekSliderWidth = seekslider.offsetWidth;		
 	
 	//Audio Object
 	var audio = new Audio();
@@ -41,7 +44,7 @@ function initAudioPlayer() {
 	currTrackName.innerHTML = playlist[playlist_index].slice(0, -4);
 	audio.pause(); // Make sure audio does not start automatically
 	//Update title attributes to say what the previous and next tracks are/were.
-	nextPrevTitleUpdate();
+	nextPrevTitleUpdate();	
 	
 	//Create AnalyserNode
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
@@ -74,7 +77,10 @@ function initAudioPlayer() {
 	audio.addEventListener("ended", function() { nextTrack(); });
 	
 	//Draw oscilloscope
-	draw();
+	draw();	
+	
+	//Show playlist
+	showPlayList();
 	
 	//Play and pause the audio
 	function playPause() {
@@ -237,5 +243,25 @@ function initAudioPlayer() {
 		ctx.lineTo(canvas.width, canvas.height / 2);
 		ctx.stroke();
 	}	
+	
+	//Show playlist
+	function showPlayList() {		
+		var playListDisplay = document.createElement("div");
+		playListDisplay.id = "playlist";
+		document.body.appendChild(playListDisplay);		
+		
+		var playListTitle = document.createElement("h1");
+		playListTitle.id = "playlisttitle";
+		playListDisplay.appendChild(playListTitle);
+		playListTitle.innerHTML = "Playlist";
+		
+		for (var i = 0; i < playlist.length - 1; i++) {
+			var audioTitle = document.createElement("div");
+			audioTitle.id = "tracktitle";
+			playListDisplay.appendChild(audioTitle);
+			audioTitle.innerHTML = "Track " + i + " " + playlist[i].slice(0, -4);
+			
+		}
+	}
 	
 }

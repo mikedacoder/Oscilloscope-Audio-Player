@@ -141,4 +141,28 @@ input[type='range']::-ms-thumb{
 	border-bottom: #444 1px solid;	
 	border-radius: 5px;
 }
-
+#playlist{	
+	width: 610px;
+	height: auto;
+	background: #BAE2B3;
+	font-size: 16px;
+	border: 5px solid #000;
+	border-radius: 5px;	
+	margin: 10px;
+}
+#playlisttitle {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	color: #fff;
+	background: #000;
+	padding-bottom: 5px;
+	
+}
+#tracktitle{
+	font-size: 18px;
+	padding: 5px;
+}
+#tracktitle:nth-child(odd){
+	background: #C1C9C3;
+}

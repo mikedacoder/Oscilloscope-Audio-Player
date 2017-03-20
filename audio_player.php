@@ -24,7 +24,7 @@
 			<input id="seekslider" type="range" min="0" max="481" value="0" step="1" title="Seek">
 			<canvas id="oscilloscope"></canvas>
 		</div>		
-	</div>
+	</div>	
 
 <?php
 //Get all audio files from the Audio directory.
