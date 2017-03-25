@@ -34,9 +34,10 @@ function initAudioPlayer() {
 	var currtime = document.getElementById("currtime");
 	var durationtime = document.getElementById("durationtime");
 	var currTrackName = document.getElementById("currTrackName");
+	var shufflebtn = document.getElementById("shuffle");
 	
 	//Get the width of the seek slider (so math is correct)	
-	var seekSliderWidth = seekslider.offsetWidth;		
+	var seekSliderWidth = seekslider.offsetWidth;	
 	
 	//Audio Object
 	var audio = new Audio();
@@ -75,6 +76,7 @@ function initAudioPlayer() {
 	prevbtn.addEventListener("click", prevTrack);
 	nextbtn.addEventListener("click", function() { nextTrack(); });
 	audio.addEventListener("ended", function() { nextTrack(); });
+	shufflebtn.addEventListener("click", shuffle);
 	
 	//Draw oscilloscope
 	draw();	
@@ -245,7 +247,8 @@ function initAudioPlayer() {
 	}	
 	
 	//Show playlist
-	function showPlayList() {		
+	function showPlayList() {	
+		//Create element to use to attach playlist
 		var playListDisplay = document.createElement("div");
 		playListDisplay.id = "playlist";
 		document.body.appendChild(playListDisplay);		
@@ -253,15 +256,27 @@ function initAudioPlayer() {
 		var playListTitle = document.createElement("h1");
 		playListTitle.id = "playlisttitle";
 		playListDisplay.appendChild(playListTitle);
-		playListTitle.innerHTML = "Playlist";
+		playListTitle.innerHTML = "Playlist";		
 		
 		for (var i = 0; i < playlist.length - 1; i++) {
 			var audioTitle = document.createElement("div");
 			audioTitle.id = "tracktitle";
 			playListDisplay.appendChild(audioTitle);
-			audioTitle.innerHTML = "Track " + i + " " + playlist[i].slice(0, -4);
+			audioTitle.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);
+			if(playlist_index === i) {
+				console.log("Now playing " + playlist[playlist_index].slice(0, -4));
+			}
 			
 		}
+	}
+	
+	function shuffle() {
+		var playListDisplay = document.getElementById("playlist")
+		console.log(playlist);
+		playlist.sort(function(a, b){return 0.5 - Math.random()});
+		document.body.removeChild(playListDisplay);
+		console.log(playlist);
+    showPlayList();
 	}
 	
 }
