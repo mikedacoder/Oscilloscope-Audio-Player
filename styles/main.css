@@ -156,7 +156,7 @@ input[type='range']::-ms-thumb{
 	font-size: 24px;
 	color: #fff;
 	background: #000;
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 	
 }
 #tracktitle{
@@ -165,4 +165,15 @@ input[type='range']::-ms-thumb{
 }
 #tracktitle:nth-child(odd){
 	background: #C1C9C3;
+}
+#shuffle{
+	cursor: pointer;
+	float: right;
+	font-size: 16px;
+	margin: 3px 5px 5px 5px;
+	padding: 1px;
+	outline: none;
+	border-radius: 15%;;
+	background: #000;
+	color: #FFF;
 }
