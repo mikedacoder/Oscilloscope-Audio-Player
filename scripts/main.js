@@ -258,7 +258,7 @@ function initAudioPlayer() {
 		playListDisplay.appendChild(playListTitle);
 		playListTitle.innerHTML = "Playlist";		
 		
-		for (var i = 0; i < playlist.length - 1; i++) {
+		for (var i = 0; i < playlist.length; i++) {
 			var audioTitle = document.createElement("div");
 			audioTitle.id = "tracktitle";
 			playListDisplay.appendChild(audioTitle);
@@ -277,6 +277,7 @@ function initAudioPlayer() {
 		document.body.removeChild(playListDisplay);
 		console.log(playlist);
     showPlayList();
+		nextPrevTitleUpdate();
 	}
 	
 }
