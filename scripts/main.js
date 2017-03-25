@@ -33,8 +33,7 @@ function initAudioPlayer() {
 	var seekslider = document.getElementById("seekslider");
 	var currtime = document.getElementById("currtime");
 	var durationtime = document.getElementById("durationtime");
-	var currTrackName = document.getElementById("currTrackName");
-	var shufflebtn = document.getElementById("shuffle");
+	var currTrackName = document.getElementById("currTrackName");	
 	
 	//Get the width of the seek slider (so math is correct)	
 	var seekSliderWidth = seekslider.offsetWidth;	
@@ -75,8 +74,7 @@ function initAudioPlayer() {
 	audio.addEventListener("timeupdate", function(){ seekTimeUpdate(); });	
 	prevbtn.addEventListener("click", prevTrack);
 	nextbtn.addEventListener("click", function() { nextTrack(); });
-	audio.addEventListener("ended", function() { nextTrack(); });
-	shufflebtn.addEventListener("click", shuffle);
+	audio.addEventListener("ended", function() { nextTrack(); });	
 	
 	//Draw oscilloscope
 	draw();	
@@ -251,8 +249,17 @@ function initAudioPlayer() {
 		//Create element to use to attach playlist
 		var playListDisplay = document.createElement("div");
 		playListDisplay.id = "playlist";
-		document.body.appendChild(playListDisplay);		
+		document.body.appendChild(playListDisplay);	
 		
+		//Add shuffle button
+		var shufflebtn = document.createElement("button");
+		shufflebtn.type = "button";
+		shufflebtn.id = "shuffle";
+		shufflebtn.innerHTML = "Shuffle";
+		playListDisplay.appendChild(shufflebtn);
+		shufflebtn.addEventListener("click", shuffle);
+		
+		//Attach playlist
 		var playListTitle = document.createElement("h1");
 		playListTitle.id = "playlisttitle";
 		playListDisplay.appendChild(playListTitle);
@@ -270,6 +277,7 @@ function initAudioPlayer() {
 		}
 	}
 	
+	// Shuffle tracklist. (Current/loaded audio track does not change)
 	function shuffle() {
 		var playListDisplay = document.getElementById("playlist")
 		console.log(playlist);
