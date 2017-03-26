@@ -19,6 +19,8 @@ function initAudioPlayer() {
 			"Nothing Else Matters", 
 			"How Will I Laugh Tomorrow"
 			];*/
+	// Store original playlistfor use in playlist creation.	
+	var originalPlaylist = playlist.slice();
 	var seeking;
 	var playing = false;
 	
@@ -255,6 +257,7 @@ function initAudioPlayer() {
 		createPlaylistbtn.id = "createplaylist";
 		createPlaylistbtn.innerHTML = "Create Playlist";
 		playListDisplay.appendChild(createPlaylistbtn);
+		createPlaylistbtn.removeEventListener("click", resetPlaylist);
 		createPlaylistbtn.addEventListener("click", createPlaylist);
 		
 		//Add shuffle button
@@ -317,19 +320,32 @@ function initAudioPlayer() {
 	
 	// Create the user selected playlist
 	function createPlaylist() {
-		var playListDisplay = document.getElementById("playlist");
+		var playListDisplay = document.getElementById("playlist");		
 		playlist = [];
 		var trackSelections = document.getElementsByClassName("checkbox");		
 		for(var i = 0; i < trackSelections.length; i++){
 			if(trackSelections[i].checked){
 			 	playlist.push(trackSelections[i].value);
       }
-		}
+		}		
 		document.body.removeChild(playListDisplay);
 		audio.src = dir + playlist[0];
 		currTrackName.innerHTML = playlist[0].slice(0, -4);
 		showPlayList();
-		nextPrevTitleUpdate();		
+		nextPrevTitleUpdate();
+		var createPlaylistbtn = document.getElementById("createplaylist");
+		createPlaylistbtn.innerHTML = "Reset Playlist";
+		createPlaylistbtn.removeEventListener("click", createPlaylist);
+		createPlaylistbtn.addEventListener("click", resetPlaylist);		
+	}
+	
+	function resetPlaylist() {
+		playlist = originalPlaylist.slice();
+		originalPlaylist = [];		
+		var playListDisplay = document.getElementById("playlist");
+		document.body.removeChild(playListDisplay);		
+		showPlayList();
+		nextPrevTitleUpdate();
 	}
 	
 }
