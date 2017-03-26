@@ -170,6 +170,10 @@ input[type='range']::-ms-thumb{
 #tracktitle input{
 	margin-top: 5px;
 }
+.checkbox{
+	display: inline;
+	float: left;
+}
 #tracktitle p{	
 	margin-left: 20px;
 }

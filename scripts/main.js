@@ -245,7 +245,7 @@ function initAudioPlayer() {
 	//Show playlist
 	function showPlayList() {	
 		//Create element to use to attach playlist
-		var playListDisplay = document.createElement("form");
+		var playListDisplay = document.createElement("div");
 		playListDisplay.id = "playlist";
 		document.body.appendChild(playListDisplay);
 		
@@ -255,7 +255,7 @@ function initAudioPlayer() {
 		createPlaylistbtn.id = "createplaylist";
 		createPlaylistbtn.innerHTML = "Create Playlist";
 		playListDisplay.appendChild(createPlaylistbtn);
-		createPlaylistbtn.addEventListener("click", shuffle);
+		createPlaylistbtn.addEventListener("click", createPlaylist);
 		
 		//Add shuffle button
 		var shufflebtn = document.createElement("button");
@@ -275,11 +275,11 @@ function initAudioPlayer() {
 			var audioTitle = document.createElement("div");
 			audioTitle.id = "tracktitle";
 			
-			var checkbox = document.createElement("INPUT");
+			var checkbox = document.createElement("input");
 			checkbox.type = "checkbox";
 			checkbox.value = playlist[i];
-			checkbox.style.display = "inline";
-			checkbox.style.float = "left";
+			checkbox.id = "checkbox" + [i];
+			checkbox.className = "checkbox";			
 			
 			var audioTitleText = document.createElement("p");
 			
@@ -295,13 +295,41 @@ function initAudioPlayer() {
 		}
 	}
 	
-	// Shuffle tracklist. (Current/loaded audio track does not change until next or previous button clicked)
+	// Shuffle tracklist.
 	function shuffle() {
 		var playListDisplay = document.getElementById("playlist");		
 		playlist.sort(function(a, b){return 0.5 - Math.random()});
-		document.body.removeChild(playListDisplay);		
+		document.body.removeChild(playListDisplay);	
+		audio.src = dir + playlist[0];
+		currTrackName.innerHTML = playlist[0].slice(0, -4);
     showPlayList();
 		nextPrevTitleUpdate();
+		if(playing === false) {
+			audio.pause();
+			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";
+		} else {
+			audio.play();
+			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";			
+		}	
+	}
+	
+	// Create the user selected playlist
+	function createPlaylist() {
+		var playListDisplay = document.getElementById("playlist");
+		playlist = [];
+		var trackSelections = document.getElementsByClassName("checkbox");		
+		for(var i = 0; i < trackSelections.length; i++){
+			if(trackSelections[i].checked){
+			 	playlist.push(trackSelections[i].value);
+      }
+		}
+		document.body.removeChild(playListDisplay);
+		audio.src = dir + playlist[0];
+		currTrackName.innerHTML = playlist[0].slice(0, -4);
+		showPlayList();
+		nextPrevTitleUpdate();		
 	}
 	
 }
