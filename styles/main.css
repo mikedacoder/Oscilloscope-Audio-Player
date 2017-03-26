@@ -160,20 +160,38 @@ input[type='range']::-ms-thumb{
 	
 }
 #tracktitle{
+	display: block;
 	font-size: 18px;
 	padding: 5px;
 }
 #tracktitle:nth-child(odd){
 	background: #C1C9C3;
 }
+#tracktitle input{
+	margin-top: 5px;
+}
+#tracktitle p{	
+	margin-left: 20px;
+}
+#createplaylist{
+	cursor: pointer;
+	float: left;
+	font-size: 16px;
+	margin: 3px 5px 5px 5px;
+	padding: 2px;
+	outline: none;
+	border-radius: 5px;
+	background: #000;
+	color: #FFF;
+}
 #shuffle{
 	cursor: pointer;
 	float: right;
 	font-size: 16px;
 	margin: 3px 5px 5px 5px;
-	padding: 1px;
+	padding: 2px;
 	outline: none;
-	border-radius: 15%;;
+	border-radius: 5px;
 	background: #000;
 	color: #FFF;
 }

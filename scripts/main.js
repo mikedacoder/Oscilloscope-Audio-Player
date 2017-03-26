@@ -1,8 +1,6 @@
 // JavaScript Document
 window.addEventListener("load", initAudioPlayer);
 
-
-
 //Create audio player functionality
 function initAudioPlayer() {	
 	
@@ -247,9 +245,17 @@ function initAudioPlayer() {
 	//Show playlist
 	function showPlayList() {	
 		//Create element to use to attach playlist
-		var playListDisplay = document.createElement("div");
+		var playListDisplay = document.createElement("form");
 		playListDisplay.id = "playlist";
-		document.body.appendChild(playListDisplay);	
+		document.body.appendChild(playListDisplay);
+		
+		//Add Create Playlist Button
+		var createPlaylistbtn = document.createElement("button");
+		createPlaylistbtn.type = "submit";
+		createPlaylistbtn.id = "createplaylist";
+		createPlaylistbtn.innerHTML = "Create Playlist";
+		playListDisplay.appendChild(createPlaylistbtn);
+		createPlaylistbtn.addEventListener("click", shuffle);
 		
 		//Add shuffle button
 		var shufflebtn = document.createElement("button");
@@ -265,25 +271,35 @@ function initAudioPlayer() {
 		playListDisplay.appendChild(playListTitle);
 		playListTitle.innerHTML = "Playlist";		
 		
-		for (var i = 0; i < playlist.length; i++) {
+		for (var i = 0; i < playlist.length; i++) {			
 			var audioTitle = document.createElement("div");
 			audioTitle.id = "tracktitle";
-			playListDisplay.appendChild(audioTitle);
-			audioTitle.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);
-			if(playlist_index === i) {
-				console.log("Now playing " + playlist[playlist_index].slice(0, -4));
-			}
 			
+			var checkbox = document.createElement("INPUT");
+			checkbox.type = "checkbox";
+			checkbox.value = playlist[i];
+			checkbox.style.display = "inline";
+			checkbox.style.float = "left";
+			
+			var audioTitleText = document.createElement("p");
+			
+			
+			playListDisplay.appendChild(audioTitle);									
+			audioTitle.appendChild(checkbox);
+			audioTitle.appendChild(audioTitleText);			
+			audioTitleText.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);
+			
+			if(playlist_index === i) {
+				//console.log("Now playing " + playlist[playlist_index].slice(0, -4));
+			}			
 		}
 	}
 	
-	// Shuffle tracklist. (Current/loaded audio track does not change)
+	// Shuffle tracklist. (Current/loaded audio track does not change until next or previous button clicked)
 	function shuffle() {
-		var playListDisplay = document.getElementById("playlist")
-		console.log(playlist);
+		var playListDisplay = document.getElementById("playlist");		
 		playlist.sort(function(a, b){return 0.5 - Math.random()});
-		document.body.removeChild(playListDisplay);
-		console.log(playlist);
+		document.body.removeChild(playListDisplay);		
     showPlayList();
 		nextPrevTitleUpdate();
 	}
