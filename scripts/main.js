@@ -288,7 +288,7 @@ function initAudioPlayer() {
 			
 		 	var downloadbtn = document.createElement("a");
 			downloadbtn.innerHTML = "Download "; // + playlist[i].slice(0, -4);
-			downloadbtn.download =  dir + playlist[i];
+			downloadbtn.download =  playlist[i];
 			downloadbtn.href = dir + playlist[i];
 			downloadbtn.title = "Download " + playlist[i];
 			
