@@ -286,10 +286,20 @@ function initAudioPlayer() {
 			
 			var audioTitleText = document.createElement("p");
 			
+		 	var downloadbtn = document.createElement("a");
+			downloadbtn.innerHTML = "Download "; // + playlist[i].slice(0, -4);
+			downloadbtn.download =  dir + playlist[i];
+			downloadbtn.href = dir + playlist[i];
+			downloadbtn.title = "Download " + playlist[i];
+			
+			//var downloadbtn = document.createElement("button");
+			//downloadbtn.type="submit";
+			//downloadform.appendChild(downloadbtn);
 			
 			playListDisplay.appendChild(audioTitle);									
 			audioTitle.appendChild(checkbox);
-			audioTitle.appendChild(audioTitleText);			
+			audioTitle.appendChild(audioTitleText);	
+			audioTitle.appendChild(downloadbtn);
 			audioTitleText.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);
 			
 			if(playlist_index === i) {
@@ -339,12 +349,14 @@ function initAudioPlayer() {
 		createPlaylistbtn.addEventListener("click", resetPlaylist);		
 	}
 	
+	//Function to return to the original playlist - Not currently working correctly
 	function resetPlaylist() {
 		playlist = originalPlaylist.slice();
 		originalPlaylist = [];		
 		var playListDisplay = document.getElementById("playlist");
 		document.body.removeChild(playListDisplay);		
 		showPlayList();
+		console.log(playlist);
 		nextPrevTitleUpdate();
 	}
 	

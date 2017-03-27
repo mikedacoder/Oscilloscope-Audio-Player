@@ -174,8 +174,14 @@ input[type='range']::-ms-thumb{
 	display: inline;
 	float: left;
 }
-#tracktitle p{	
+#tracktitle p{
+	display: inline-block;
 	margin-left: 20px;
+	width: 80%;	
+}
+#tracktitle a{	
+	display: inline-block;
+	float: right;
 }
 #createplaylist{
 	cursor: pointer;
