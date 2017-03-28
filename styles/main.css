@@ -177,13 +177,17 @@ input[type='range']::-ms-thumb{
 #tracktitle p{
 	display: inline-block;
 	margin-left: 20px;
-	width: 80%;
+	width: 79%;
 	padding: 5px;
 	border-radius: 5px;
 }
-#tracktitle a{	
+#tracktitle a{
 	display: inline-block;
 	float: right;
+	color: #6113f8;
+}
+#tracktitle a:hover{	
+	color: #f81337;
 }
 #createplaylist{
 	cursor: pointer;
