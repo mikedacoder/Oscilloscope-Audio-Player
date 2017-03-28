@@ -274,28 +274,29 @@ function initAudioPlayer() {
 		playListDisplay.appendChild(playListTitle);
 		playListTitle.innerHTML = "Playlist";		
 		
-		for (var i = 0; i < playlist.length; i++) {			
+		for (var i = 0; i < playlist.length; i++) {	
+			//Create div to wrap around playlist content.
 			var audioTitle = document.createElement("div");
 			audioTitle.id = "tracktitle";
 			
+			//Create checkboxes to use to create custom playlists.
 			var checkbox = document.createElement("input");
 			checkbox.type = "checkbox";
 			checkbox.value = playlist[i];
 			checkbox.id = "checkbox" + [i];
 			checkbox.className = "checkbox";			
 			
+			//Create <p> element to contain track title.
 			var audioTitleText = document.createElement("p");
 			
+			//Create downalod link to download file.
 		 	var downloadbtn = document.createElement("a");
-			downloadbtn.innerHTML = "Download "; // + playlist[i].slice(0, -4);
+			downloadbtn.innerHTML = "Download ";
 			downloadbtn.download =  playlist[i];
 			downloadbtn.href = dir + playlist[i];
-			downloadbtn.title = "Download " + playlist[i];
+			downloadbtn.title = "Download " + playlist[i];			
 			
-			//var downloadbtn = document.createElement("button");
-			//downloadbtn.type="submit";
-			//downloadform.appendChild(downloadbtn);
-			
+			//Attach playlist content to playlist area.
 			playListDisplay.appendChild(audioTitle);									
 			audioTitle.appendChild(checkbox);
 			audioTitle.appendChild(audioTitleText);	
