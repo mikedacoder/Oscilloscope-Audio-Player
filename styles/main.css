@@ -177,7 +177,9 @@ input[type='range']::-ms-thumb{
 #tracktitle p{
 	display: inline-block;
 	margin-left: 20px;
-	width: 80%;	
+	width: 80%;
+	padding: 5px;
+	border-radius: 5px;
 }
 #tracktitle a{	
 	display: inline-block;

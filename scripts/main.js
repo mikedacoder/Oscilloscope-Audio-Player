@@ -169,7 +169,8 @@ function initAudioPlayer() {
 			audio.play();
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";			
-		}		
+		}	
+		highlightCurrentPlayingTrack();
 	}
 	
 	//Switch to the next track
@@ -192,7 +193,8 @@ function initAudioPlayer() {
 			audio.play();			
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";	
-		}		
+		}	
+		highlightCurrentPlayingTrack();
 	}
 	
 	//Update title attributes to say what the previous and next tracks are/were.
@@ -288,6 +290,7 @@ function initAudioPlayer() {
 			
 			//Create <p> element to contain track title.
 			var audioTitleText = document.createElement("p");
+			audioTitleText.id = "track" + [i];
 			
 			//Create downalod link to download file.
 		 	var downloadbtn = document.createElement("a");
@@ -301,12 +304,9 @@ function initAudioPlayer() {
 			audioTitle.appendChild(checkbox);
 			audioTitle.appendChild(audioTitleText);	
 			audioTitle.appendChild(downloadbtn);
-			audioTitleText.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);
-			
-			if(playlist_index === i) {
-				//console.log("Now playing " + playlist[playlist_index].slice(0, -4));
-			}			
-		}
+			audioTitleText.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);						
+		}	
+		highlightCurrentPlayingTrack();
 	}
 	
 	// Shuffle tracklist.
@@ -361,4 +361,16 @@ function initAudioPlayer() {
 		nextPrevTitleUpdate();
 	}
 	
+	//Make currently playing track obvious in the playlist.
+	function highlightCurrentPlayingTrack() {		
+		for(var i = 0; i < playlist.length; i++) {
+			if(document.getElementById("track" + [i]).id !== "track" + playlist_index) {
+				document.getElementById("track" + [i]).style.background = "none";
+				document.getElementById("track" + [i]).style.color = "#000000";
+			} else {
+				document.getElementById("track" + [i]).style.background = "#000000";
+				document.getElementById("track" + [i]).style.color = "rgb(57, 255, 20)";				
+			}
+		}
+	}	
 }
