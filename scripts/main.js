@@ -367,9 +367,11 @@ function initAudioPlayer() {
 			if(document.getElementById("track" + [i]).id !== "track" + playlist_index) {
 				document.getElementById("track" + [i]).style.background = "none";
 				document.getElementById("track" + [i]).style.color = "#000000";
+				document.getElementById("track" + [i]).style.textAlign = "left";
 			} else {
 				document.getElementById("track" + [i]).style.background = "#000000";
-				document.getElementById("track" + [i]).style.color = "rgb(57, 255, 20)";				
+				document.getElementById("track" + [i]).style.color = "rgb(57, 255, 20)";
+				document.getElementById("track" + [i]).style.textAlign = "center";
 			}
 		}
 	}	
