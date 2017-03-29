@@ -355,7 +355,7 @@ function initAudioPlayer() {
 	//Function to return to the original playlist - Not currently working correctly
 	function resetPlaylist() {
 		playlist = originalPlaylist.slice();
-		originalPlaylist = [];		
+		//originalPlaylist = [];		
 		var playListDisplay = document.getElementById("playlist");
 		document.body.removeChild(playListDisplay);		
 		showPlayList();
