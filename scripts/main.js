@@ -328,6 +328,7 @@ function initAudioPlayer() {
 			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
 			playbtn.style.backgroundSize = "100% 100%";			
 		}	
+		highlightCurrentPlayingTrack();
 	}
 	
 	// Create the user selected playlist
