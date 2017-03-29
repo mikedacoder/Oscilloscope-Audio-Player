@@ -198,14 +198,14 @@ function initAudioPlayer() {
 	}
 	
 	//Update title attributes to say what the previous and next tracks are/were.
-	function nextPrevTitleUpdate() {
+	function nextPrevTitleUpdate() {		
 		if(playlist_index === 0) {
 			prevbtn.title = "Previous Track: " + (playlist[playlist.length - 1].slice(0, -4));
 			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1].slice(0, -4));
 		} else if(playlist_index === (playlist.length - 1)) {
 			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1].slice(0, -4));
 			nextbtn.title = "Next Track: " + (playlist[0].slice(0, -4));
-		} else {
+		} else {		
 			prevbtn.title = "Previous Track: " + (playlist[playlist_index - 1].slice(0, -4));
 			nextbtn.title = "Next Track: " + (playlist[playlist_index + 1].slice(0, -4));
 		}
@@ -290,7 +290,8 @@ function initAudioPlayer() {
 			
 			//Create <p> element to contain track title.
 			var audioTitleText = document.createElement("p");
-			audioTitleText.id = "track" + [i];
+			audioTitleText.id = playlist[i]; // Make the ID the same as the track title
+			audioTitleText.addEventListener("click", switchTrack);
 			
 			//Create downalod link to download file.
 		 	var downloadbtn = document.createElement("a");
@@ -364,15 +365,37 @@ function initAudioPlayer() {
 	//Make currently playing track obvious in the playlist.
 	function highlightCurrentPlayingTrack() {		
 		for(var i = 0; i < playlist.length; i++) {
-			if(document.getElementById("track" + [i]).id !== "track" + playlist_index) {
-				document.getElementById("track" + [i]).style.background = "none";
-				document.getElementById("track" + [i]).style.color = "#000000";
-				document.getElementById("track" + [i]).style.textAlign = "left";
+			if(document.getElementById(playlist[i]).id !== playlist[playlist_index]) {
+				document.getElementById(playlist[i]).style.background = "none";
+				document.getElementById(playlist[i]).style.color = "#000000";
+				document.getElementById(playlist[i]).style.textAlign = "left";
 			} else {
-				document.getElementById("track" + [i]).style.background = "#000000";
-				document.getElementById("track" + [i]).style.color = "rgb(57, 255, 20)";
-				document.getElementById("track" + [i]).style.textAlign = "center";
+				document.getElementById(playlist[i]).style.background = "#000000";
+				document.getElementById(playlist[i]).style.color = "rgb(57, 255, 20)";
+				document.getElementById(playlist[i]).style.textAlign = "center";
 			}
 		}
-	}	
+	}
+	
+	function switchTrack(event) {
+		for(var i = 0; i < playlist.length; i++){			
+			if(event.target.id === playlist[i]) {
+				playlist_index = i;					
+			}
+		}
+		audio.src = dir + playlist[playlist_index];
+		currTrackName.innerHTML = playlist[playlist_index].slice(0, -4);		
+		nextPrevTitleUpdate();
+		audio.currentTime = 0;				
+		if(playing === false) {
+			audio.pause();
+			playbtn.style.background = "url(images/PlayButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";
+		} else {
+			audio.play();			
+			playbtn.style.background = "url(images/PauseButton.png) no-repeat";
+			playbtn.style.backgroundSize = "100% 100%";	
+		}	
+		highlightCurrentPlayingTrack();		
+	}
 }
