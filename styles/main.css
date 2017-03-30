@@ -5,7 +5,7 @@
 	padding: 0;
 }
 body{
-	background: #CCC;
+	background: #CCC;	
 }
 .audio-player{
 	display: block;
@@ -171,7 +171,7 @@ input[type='range']::-ms-thumb{
 	margin-top: 8px;
 }
 .checkbox{
-	display: inline;
+	display: inline-block;
 	float: left;
 }
 #tracktitle p{
@@ -211,4 +211,115 @@ input[type='range']::-ms-thumb{
 	border-radius: 5px;
 	background: #000;
 	color: #FFF;
+}
+
+/* Responsive for mobile */
+@media (max-width: 350px) {
+	body{
+		width: 100vw;
+	}
+	.audio-player{		
+		height: 200px;		
+	}
+	#prevbtn{
+		width: 5%;		
+	}
+	#playpausebtn{
+		width: 5%;		
+	}
+	#nextbtn{		
+		width: 5%;		
+	}
+	#mutebtn{		
+		width: 5%;		
+	}
+	#volumeslider{
+		width: 10%;		
+	}
+	#currTrack{		
+		width: 98.25%;		
+	}
+	#timebox{		
+		width: 30%;		
+	}
+	#seekslider{
+		width: 65%;		
+	}
+	#playlist{		
+		width: 92.5%;
+		height: 335px;
+		overflow:scroll;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 14px;		
+	}
+	#tracktitle input{		
+		/*margin-top: 4px;*/
+	}
+	#tracktitle p{
+		width: 65%;		
+		margin-left: 1%;
+	}
+	#createplaylist, #shuffle{
+		font-size: 14px;
+		margin: 2px 7px 7px 7px;
+	}
+}
+@media (max-width: 400px) {
+	body{
+		width: 100vw;
+	}
+	.audio-player{		
+		width: 90%;		
+		margin: 10px auto;
+	}
+	#prevbtn{
+		width: 15%;		
+	}
+	#playpausebtn{
+		width: 15%;
+	}
+	#nextbtn{		
+		width: 15%;		
+	}
+	#mutebtn{		
+		width: 15%;		
+	}
+	#volumeslider{
+		width: 25%;		
+	}
+	#currTrack{		
+		width: 98.25%;		
+	}
+	#timebox{		
+		width: 30%;		
+	}
+	#seekslider{
+		width: 65%;		
+	}
+	#playlist{		
+		width: 92.5%;
+		height: 335px;
+		overflow:scroll;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 14px;		
+	}
+	#tracktitle input{		
+		/*margin-top: 4px;*/
+	}
+	#tracktitle p{
+		width: 65%;		
+		margin-left: 1%;
+	}
+	#createplaylist, #shuffle{
+		font-size: 14px;
+		margin: 2px 7px 7px 7px;
+	}
 }
