@@ -214,63 +214,10 @@ input[type='range']::-ms-thumb{
 }
 
 /* Responsive for mobile */
-@media (max-width: 350px) {
+
+@media (max-width: 600px) {
 	body{
-		width: 100vw;
-	}
-	.audio-player{		
-		height: 200px;		
-	}
-	#prevbtn{
-		width: 5%;		
-	}
-	#playpausebtn{
-		width: 5%;		
-	}
-	#nextbtn{		
-		width: 5%;		
-	}
-	#mutebtn{		
-		width: 5%;		
-	}
-	#volumeslider{
-		width: 10%;		
-	}
-	#currTrack{		
-		width: 98.25%;		
-	}
-	#timebox{		
-		width: 30%;		
-	}
-	#seekslider{
-		width: 65%;		
-	}
-	#playlist{		
-		width: 92.5%;
-		height: 335px;
-		overflow:scroll;
-	}
-	#playlisttitle {
-		font-size: 20px;
-	}
-	#tracktitle{
-		font-size: 14px;		
-	}
-	#tracktitle input{		
-		/*margin-top: 4px;*/
-	}
-	#tracktitle p{
-		width: 65%;		
-		margin-left: 1%;
-	}
-	#createplaylist, #shuffle{
-		font-size: 14px;
-		margin: 2px 7px 7px 7px;
-	}
-}
-@media (max-width: 400px) {
-	body{
-		width: 100vw;
+		width: 100%;
 	}
 	.audio-player{		
 		width: 90%;		
@@ -289,16 +236,123 @@ input[type='range']::-ms-thumb{
 		width: 15%;		
 	}
 	#volumeslider{
-		width: 25%;		
+		width: 30%;		
 	}
 	#currTrack{		
-		width: 98.25%;		
+		width: 98%;		
+	}
+	#timebox{		
+		width: 25%;		
+	}
+	#seekslider{
+		width: 72%;		
+	}
+	#oscilloscope{		
+		width: 99%;
+	}
+	#playlist{		
+		width: 92%;
+		margin: 10px auto;
+		height: 700px;
+		overflow:scroll;
+	}	
+	#tracktitle p{
+		width: 75%;		
+		
+	}
+	
+}
+
+@media (max-width: 450px) {
+	body{
+		width: 100%;
+	}
+	.audio-player{		
+		width: 90%;		
+		margin: 10px auto;
+	}
+	#prevbtn{
+		width: 15%;		
+	}
+	#playpausebtn{
+		width: 15%;
+	}
+	#nextbtn{		
+		width: 15%;		
+	}
+	#mutebtn{		
+		width: 15%;		
+	}
+	#volumeslider{
+		width: 25.5%;		
+	}
+	#currTrack{		
+		width: 97%;		
 	}
 	#timebox{		
 		width: 30%;		
 	}
 	#seekslider{
 		width: 65%;		
+	}
+	#oscilloscope{		
+		width: 99%;
+	}
+	#playlist{		
+		width: 92.5%;
+		height: 400px;
+		overflow:scroll;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 14px;		
+	}	
+	#tracktitle p{
+		width: 65%;		
+		margin-left: 1%;
+	}
+	#createplaylist, #shuffle{
+		font-size: 14px;
+		margin: 2px 7px 7px 7px;
+	}
+}
+
+@media (max-width: 400px) {
+	body{
+		width: 100%;
+	}
+	.audio-player{		
+		width: 90%;		
+		margin: 10px auto;
+	}
+	#prevbtn{
+		width: 15%;		
+	}
+	#playpausebtn{
+		width: 15%;
+	}
+	#nextbtn{		
+		width: 15%;		
+	}
+	#mutebtn{		
+		width: 15%;		
+	}
+	#volumeslider{
+		width: 25.5%;		
+	}
+	#currTrack{		
+		width: 97%;		
+	}
+	#timebox{		
+		width: 30%;		
+	}
+	#seekslider{
+		width: 65%;		
+	}
+	#oscilloscope{		
+		width: 99%;
 	}
 	#playlist{		
 		width: 92.5%;
@@ -310,10 +364,76 @@ input[type='range']::-ms-thumb{
 	}
 	#tracktitle{
 		font-size: 14px;		
+	}	
+	#tracktitle p{
+		width: 65%;		
+		margin-left: 1%;
 	}
-	#tracktitle input{		
-		/*margin-top: 4px;*/
+	#createplaylist, #shuffle{
+		font-size: 14px;
+		margin: 2px 7px 7px 7px;
 	}
+}
+
+@media (max-width: 375px) {
+	#oscilloscope{
+		height: 100px;
+		width: 98%;
+	}
+	#volumeslider{
+		width: 24%;		
+	}
+}
+
+@media (max-width: 350px) {
+	body{
+		width: 100%;
+	}
+	.audio-player {	
+		width: 85%;
+		height: 200px;
+		margin: 10px auto;
+	}
+	#prevbtn{
+		width: 15%;		
+	}
+	#playpausebtn{
+		width: 15%;		
+	}
+	#nextbtn{		
+		width: 15%;		
+	}
+	#mutebtn{		
+		width: 15%;		
+	}
+	#volumeslider{
+		width: 21%;		
+	}
+	#currTrack{		
+		width: 95%;		
+	}
+	#timebox{		
+		width: 35%;		
+	}
+	#seekslider{
+		width: 58.5%;		
+	}
+	#oscilloscope{
+		height: 60px;
+		width: 98%;
+	}
+	#playlist{		
+		width: 88%;
+		margin: 10px auto;
+		height: 220px;
+		overflow:scroll;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 14px;		
+	}	
 	#tracktitle p{
 		width: 65%;		
 		margin-left: 1%;
