@@ -363,8 +363,7 @@ function initAudioPlayer() {
 		//originalPlaylist = [];		
 		var playListDisplay = document.getElementById("playlist");
 		document.body.removeChild(playListDisplay);		
-		showPlayList();
-		console.log(playlist);
+		showPlayList();		
 		nextPrevTitleUpdate();
 	}
 	
