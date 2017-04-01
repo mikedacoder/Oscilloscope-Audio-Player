@@ -344,16 +344,16 @@ function initAudioPlayer() {
 			if(trackSelections[i].checked){
 			 	playlist.push(trackSelections[i].value);
       }
-		}		
+		}	
+		if(playlist.length < 1) {
+			playlist = originalPlaylist.slice();
+			createdplaylist = false;
+		}
 		document.body.removeChild(playListDisplay);
 		audio.src = dir + playlist[0];
 		currTrackName.innerHTML = playlist[0].slice(0, -4);
 		showPlayList();
-		nextPrevTitleUpdate();
-		var createPlaylistbtn = document.getElementById("createplaylist");
-		createPlaylistbtn.innerHTML = "Reset Playlist";
-		createPlaylistbtn.removeEventListener("click", createPlaylist);
-		createPlaylistbtn.addEventListener("click", resetPlaylist);		
+		nextPrevTitleUpdate();				
 	}
 	
 	//Function to return to the original playlist - Not currently working correctly
