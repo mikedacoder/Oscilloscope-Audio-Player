@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!--Force the viewport to render at 100% on most devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Michael Dryburgh">
+<!--Don't cache me in-->
+<meta http-equiv="pragma" content="no-cache">
 <title>Audio Player</title>
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
