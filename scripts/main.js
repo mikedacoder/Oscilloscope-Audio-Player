@@ -248,14 +248,16 @@ function initAudioPlayer() {
 		createPlaylistbtn.id = "createplaylist";
 		if(createdplaylist === false) {			
 			createPlaylistbtn.innerHTML = "Create Playlist";
+			createPlaylistbtn.title = "Click the checkboxes of all the tracks you would like included in the custom playlist and press this button to create it.";
 			playListDisplay.appendChild(createPlaylistbtn);
 			createPlaylistbtn.removeEventListener("click", resetPlaylist);
 			createPlaylistbtn.addEventListener("click", createPlaylist);
 		} else {
 			createPlaylistbtn.innerHTML = "Reset Playlist";
+			createPlaylistbtn.title = "Click this button to return to the complete playlist.";
 			playListDisplay.appendChild(createPlaylistbtn);
 			createPlaylistbtn.removeEventListener("click", createPlaylist);
-			createPlaylistbtn.addEventListener("click", resetPlaylist);
+			createPlaylistbtn.addEventListener("click", resetPlaylist);			
 		}
 		
 		//Add shuffle button
@@ -263,6 +265,7 @@ function initAudioPlayer() {
 		shufflebtn.type = "button";
 		shufflebtn.id = "shuffle";
 		shufflebtn.innerHTML = "Shuffle";
+		shufflebtn.title = "Click to to randomize the order of the tracks.";
 		playListDisplay.appendChild(shufflebtn);
 		shufflebtn.addEventListener("click", shuffle);
 		
@@ -371,7 +374,8 @@ function initAudioPlayer() {
 			if(document.getElementById(playlist[i]).id !== playlist[playlist_index]) {
 				document.getElementById(playlist[i]).style.background = "none";
 				document.getElementById(playlist[i]).style.color = "#000000";
-				document.getElementById(playlist[i]).style.textAlign = "left";				
+				document.getElementById(playlist[i]).style.textAlign = "left";
+				document.getElementById(playlist[i]).style.fontStyle = "normal";
 			} else {
 				document.getElementById(playlist[i]).style.background = "#000000";
 				document.getElementById(playlist[i]).style.color = "rgb(57, 255, 20)";
