@@ -4,21 +4,9 @@ window.addEventListener("load", initAudioPlayer);
 //Create audio player functionality
 function initAudioPlayer() {	
 	
-	var dir = "audio/";
-	//var ext = ".mp3";
+	var dir = "audio/";	
 	var playlist_index = 0;	
-	/*var playlist = [
-			"Blister in the Sun", 
-			"Hard to Handle", 
-			"I Love Rock N' Roll",			
-			"Sharp Dressed Man", 
-			"The Boys Are Back in Town",
-			"She Talks to Angels",
-			"Legs",
-			"You Shook Me All Night Long",
-			"Nothing Else Matters", 
-			"How Will I Laugh Tomorrow"
-			];*/
+	
 	// Store original playlistfor use in playlist creation.	
 	var originalPlaylist = playlist.slice();
 	var seeking;
