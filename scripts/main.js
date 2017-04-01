@@ -11,6 +11,7 @@ function initAudioPlayer() {
 	var originalPlaylist = playlist.slice();
 	var seeking;
 	var playing = false;
+	var createdplaylist = false;
 	
 	//Set object references
 	var playbtn = document.getElementById("playpausebtn");
@@ -245,10 +246,17 @@ function initAudioPlayer() {
 		var createPlaylistbtn = document.createElement("button");
 		createPlaylistbtn.type = "submit";
 		createPlaylistbtn.id = "createplaylist";
-		createPlaylistbtn.innerHTML = "Create Playlist";
-		playListDisplay.appendChild(createPlaylistbtn);
-		createPlaylistbtn.removeEventListener("click", resetPlaylist);
-		createPlaylistbtn.addEventListener("click", createPlaylist);
+		if(createdplaylist === false) {			
+			createPlaylistbtn.innerHTML = "Create Playlist";
+			playListDisplay.appendChild(createPlaylistbtn);
+			createPlaylistbtn.removeEventListener("click", resetPlaylist);
+			createPlaylistbtn.addEventListener("click", createPlaylist);
+		} else {
+			createPlaylistbtn.innerHTML = "Reset Playlist";
+			playListDisplay.appendChild(createPlaylistbtn);
+			createPlaylistbtn.removeEventListener("click", createPlaylist);
+			createPlaylistbtn.addEventListener("click", resetPlaylist);
+		}
 		
 		//Add shuffle button
 		var shufflebtn = document.createElement("button");
@@ -321,6 +329,7 @@ function initAudioPlayer() {
 	
 	// Create the user selected playlist
 	function createPlaylist() {
+		createdplaylist = true;
 		var playListDisplay = document.getElementById("playlist");		
 		playlist = [];
 		var trackSelections = document.getElementsByClassName("checkbox");		
@@ -342,6 +351,7 @@ function initAudioPlayer() {
 	
 	//Function to return to the original playlist - Not currently working correctly
 	function resetPlaylist() {
+		createdplaylist = false;
 		playlist = originalPlaylist.slice();
 		//originalPlaylist = [];		
 		var playListDisplay = document.getElementById("playlist");
