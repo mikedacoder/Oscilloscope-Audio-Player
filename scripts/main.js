@@ -371,11 +371,12 @@ function initAudioPlayer() {
 			if(document.getElementById(playlist[i]).id !== playlist[playlist_index]) {
 				document.getElementById(playlist[i]).style.background = "none";
 				document.getElementById(playlist[i]).style.color = "#000000";
-				document.getElementById(playlist[i]).style.textAlign = "left";
+				document.getElementById(playlist[i]).style.textAlign = "left";				
 			} else {
 				document.getElementById(playlist[i]).style.background = "#000000";
 				document.getElementById(playlist[i]).style.color = "rgb(57, 255, 20)";
 				document.getElementById(playlist[i]).style.textAlign = "center";
+				document.getElementById(playlist[i]).style.fontStyle = "italic";
 			}
 		}
 	}
