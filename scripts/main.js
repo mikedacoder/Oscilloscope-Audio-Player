@@ -237,15 +237,10 @@ function initAudioPlayer() {
 	
 	//Show playlist
 	function showPlayList() {	
-		//Create element to use to attach playlist
-		var playListDisplay = document.createElement("div");
-		playListDisplay.id = "playlist";
-		document.body.appendChild(playListDisplay);
-		
 		//Create Header div
 		var playListHeader = document.createElement("div");
 		playListHeader.id = "playlistheader";
-		playListDisplay.appendChild(playListHeader);
+		document.body.appendChild(playListHeader);				
 		
 		//Add Create Playlist Button
 		var createPlaylistbtn = document.createElement("button");
@@ -278,7 +273,12 @@ function initAudioPlayer() {
 		var playListTitle = document.createElement("h1");
 		playListTitle.id = "playlisttitle";
 		playListHeader.appendChild(playListTitle);
-		playListTitle.innerHTML = "Playlist";		
+		playListTitle.innerHTML = "Playlist";	
+		
+		//Create element to use to attach playlist
+		var playListDisplay = document.createElement("div");
+		playListDisplay.id = "playlist";
+		playListHeader.appendChild(playListDisplay);
 		
 		for (var i = 0; i < playlist.length; i++) {	
 			//Create div to wrap around playlist content.
@@ -320,9 +320,9 @@ function initAudioPlayer() {
 	
 	// Shuffle tracklist.
 	function shuffle() {
-		var playListDisplay = document.getElementById("playlist");		
+		var playListHeader = document.getElementById("playlistheader");						
 		playlist.sort(function(a, b){return 0.5 - Math.random()});
-		document.body.removeChild(playListDisplay);	
+		document.body.removeChild(playListHeader);					
 		audio.src = dir + playlist[0];
 		currTrackName.innerHTML = playlist[0].slice(0, -4);
     showPlayList();
@@ -342,7 +342,7 @@ function initAudioPlayer() {
 	// Create the user selected playlist
 	function createPlaylist() {
 		createdplaylist = true;
-		var playListDisplay = document.getElementById("playlist");		
+		var playListHeader = document.getElementById("playlistheader");				
 		playlist = [];
 		var trackSelections = document.getElementsByClassName("checkbox");		
 		for(var i = 0; i < trackSelections.length; i++){
@@ -354,7 +354,7 @@ function initAudioPlayer() {
 			playlist = originalPlaylist.slice();
 			createdplaylist = false;
 		}
-		document.body.removeChild(playListDisplay);
+		document.body.removeChild(playListHeader);		
 		audio.src = dir + playlist[0];
 		currTrackName.innerHTML = playlist[0].slice(0, -4);
 		showPlayList();
@@ -365,9 +365,9 @@ function initAudioPlayer() {
 	function resetPlaylist() {
 		createdplaylist = false;
 		playlist = originalPlaylist.slice();
-		//originalPlaylist = [];		
-		var playListDisplay = document.getElementById("playlist");
-		document.body.removeChild(playListDisplay);		
+		//originalPlaylist = [];	
+		var playListHeader = document.getElementById("playlistheader");	
+		document.body.removeChild(playListHeader);				
 		showPlayList();		
 		nextPrevTitleUpdate();
 	}
