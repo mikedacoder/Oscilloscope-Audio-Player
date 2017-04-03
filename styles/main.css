@@ -131,10 +131,10 @@ input[type='range']::-moz-range-thumb{
 input[type='range']::-ms-thumb{
 	-webkit-appearance: none !important;
 	background: radial-gradient(#FFF, #333);
-	height: 3vh;
-	width: 3vh;
+	height: 20px; /*vh doesn't seem to work in Edge */
+	width: 20px;  /*vh doesn't seem to work in Edge */
 	border-radius: 100%;
-	cursor: pointer;
+	cursor: pointer;	
 }
 #oscilloscope{
 	height: 20vh;
