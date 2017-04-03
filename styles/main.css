@@ -323,6 +323,7 @@ input[type='range']::-ms-thumb{
 	.audio-player{
 		float: none;
 		width: 90%;
+		height: 35vh;
 		margin: 1% auto;
 	}
 	#prevbtn{	
@@ -348,6 +349,9 @@ input[type='range']::-ms-thumb{
 		width: 80%;
 		margin-top: 2%;
 	}
+	#oscilloscope{
+		height: 10vh;
+	}
 	#playlistheader{
 		float: none;
 		width: 90%;		
@@ -355,7 +359,7 @@ input[type='range']::-ms-thumb{
 	}
 	#playlist{		
 		font-size: 16px;
-		height: 45vh;
+		height: 44vh;
 	}
 	#playlisttitle {
 		font-size: 24px;
@@ -503,66 +507,70 @@ input[type='range']::-ms-thumb{
 
 /*********************************** Landscape **************************************/
 @media (max-width: 800px) and (orientation: landscape){
+	.audio-player{
+		height: 77vh;
+	}
 	#prevbtn{	
-		margin-top: 4%;
+		margin-top: 8%;
+	}
+	#playpausebtn{
+		margin-top: 4.5%;
+		margin-bottom: 4.5%;
 	}
 	#nextbtn{
-		margin-top: 4%;
+		margin-top: 8%;
 	}
 	#mutebtn{
-		margin-top: 4%;
+		margin-top: 8%;
 	}
 	#volumeslider{		
-		margin-top: 7.5%;
+		margin-top: 11.5%;
+	}
+	#currTrack{		
+		height: 4vh;
+		padding-top: 1.5%;
+	}
+	#timebox{		
+		margin-top: 3%;		
 	}
 	#seekslider{
-		margin-top: 3%;
+		margin-top: 5%;
 	}
-}
-@media (max-width: 700px) and (orientation: landscape){
-	
-}
-@media (max-width: 600px) and (orientation: landscape){	
-	#prevbtn{	
-		margin-top: 5.5%;
+	#oscilloscope{
+		margin-top: 1%;
+		height: 41vh;
 	}
-	#nextbtn{
-		margin-top: 5.5%;
-	}
-	#mutebtn{
-		margin-top: 5.5%;
-	}
-	#volumeslider{		
-		margin-top: 8%;
+	#playlist{
+		height: 69vh;
 	}
 	#tracktitle p{
 		width: 58%;
 	}
 }
-@media (max-width: 500px) and (orientation: landscape){	
-	#prevbtn{	
-		margin-top: 5%;
+@media (max-width: 500px) and (orientation: landscape){
+	.audio-player{
+		height: 85vh;
 	}
-	#nextbtn{
-		margin-top: 5%;
-	}
-	#mutebtn{
-		margin-top: 5%;
-	}
-	#volumeslider{		
-		margin-top: 8.5%;
-	}
-	#currTrack{
-		font-size: 12px;
+	#currTrack{		
+		padding-bottom: 1.5%;
 	}
 	#timebox{		
-		font-size: 12px;
-	}	
+		margin-top: 5%;		
+	}
+	#seekslider{
+		margin-top: 7%;
+	}
+	#oscilloscope{
+		margin-top: 3%;
+		height: 45vh;
+	}
 	#playlist{		
 		font-size: 14px;
 	}
 	#playlisttitle {
+		height: 9.5vh;
 		font-size: 20px;
+		padding-top: 5%;
 	}
 	#tracktitle{
 		font-size: 16px;
@@ -570,16 +578,15 @@ input[type='range']::-ms-thumb{
 	#tracktitle p{
 		width: 55%;
 	}
-	#playlisttitle{
-		height: 13vh;
-	}
 	#createplaylist{		
+		width: 25%;
 		font-size: 14px;
 		padding-bottom: 1%;
-		width: 25%;
 	}
-	#shuffle{		
-		font-size: 14px;
+	#shuffle{	
 		width: 25%;
-	}	
+		font-size: 14px;
+		padding-bottom: 1%;
+		margin-top: 5%;
+	}		
 }

@@ -313,7 +313,7 @@ function initAudioPlayer() {
 			}
 			audioTitle.appendChild(audioTitleText);	
 			audioTitle.appendChild(downloadbtn);
-			audioTitleText.innerHTML = "Track " + (i + 1) + " " + playlist[i].slice(0, -4);						
+			audioTitleText.innerHTML = "Track " + (i + 1) + ": " + playlist[i].slice(0, -4);						
 		}	
 		highlightCurrentPlayingTrack();
 	}
