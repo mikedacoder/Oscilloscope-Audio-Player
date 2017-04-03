@@ -350,12 +350,12 @@ input[type='range']::-ms-thumb{
 	}
 	#playlistheader{
 		float: none;
-		width: 90%;
-		height: 49vh;
+		width: 90%;		
 		margin: 2% auto;
 	}
 	#playlist{		
 		font-size: 16px;
+		height: 45vh;
 	}
 	#playlisttitle {
 		font-size: 24px;
