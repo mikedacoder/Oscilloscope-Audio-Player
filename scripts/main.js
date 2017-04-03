@@ -242,6 +242,11 @@ function initAudioPlayer() {
 		playListDisplay.id = "playlist";
 		document.body.appendChild(playListDisplay);
 		
+		//Create Header div
+		var playListHeader = document.createElement("div");
+		playListHeader.id = "playlistheader";
+		playListDisplay.appendChild(playListHeader);
+		
 		//Add Create Playlist Button
 		var createPlaylistbtn = document.createElement("button");
 		createPlaylistbtn.type = "submit";
@@ -249,13 +254,13 @@ function initAudioPlayer() {
 		if(createdplaylist === false) {			
 			createPlaylistbtn.innerHTML = "Create Playlist";
 			createPlaylistbtn.title = "Click the checkboxes of all the tracks you would like included in the custom playlist and press this button to create it.";
-			playListDisplay.appendChild(createPlaylistbtn);
+			playListHeader.appendChild(createPlaylistbtn);
 			createPlaylistbtn.removeEventListener("click", resetPlaylist);
 			createPlaylistbtn.addEventListener("click", createPlaylist);
 		} else {
 			createPlaylistbtn.innerHTML = "Reset Playlist";
 			createPlaylistbtn.title = "Click this button to return to the complete playlist.";
-			playListDisplay.appendChild(createPlaylistbtn);
+			playListHeader.appendChild(createPlaylistbtn);
 			createPlaylistbtn.removeEventListener("click", createPlaylist);
 			createPlaylistbtn.addEventListener("click", resetPlaylist);			
 		}
@@ -266,13 +271,13 @@ function initAudioPlayer() {
 		shufflebtn.id = "shuffle";
 		shufflebtn.innerHTML = "Shuffle";
 		shufflebtn.title = "Click to to randomize the order of the tracks.";
-		playListDisplay.appendChild(shufflebtn);
+		playListHeader.appendChild(shufflebtn);
 		shufflebtn.addEventListener("click", shuffle);
 		
 		//Attach playlist
 		var playListTitle = document.createElement("h1");
 		playListTitle.id = "playlisttitle";
-		playListDisplay.appendChild(playListTitle);
+		playListHeader.appendChild(playListTitle);
 		playListTitle.innerHTML = "Playlist";		
 		
 		for (var i = 0; i < playlist.length; i++) {	

@@ -8,20 +8,21 @@ body{
 	background: #CCC;	
 	font-family: Arial, Helvetica, sans-serif;
 }
-.audio-player{
-	display: block;
-	width: 600px;
-	height: 270px;
+.audio-player{	
+	display: block;	
+	float: left;
+	width: 45%;
+	height: 44vh;
 	background: linear-gradient(#333, #000);
 	border-radius: 5px;
-	padding: 10px;
-	margin: 10px;
+	padding: 1%;
+	margin: 1%;
 }
 #audio-controls{
-	margin-left: 3px;
+	margin-left: .5%;
 }
 #audio-controls button{
-	border:none;
+	border: none;
 	cursor: pointer;
 	outline: none;
 	display: block;
@@ -35,41 +36,41 @@ body{
 #prevbtn{	
 	background: url(../images/PrevButton.png) no-repeat;
 	background-size: 100% 100%;
-	height: 35px;
-	width: 70px;
-	margin: 20px 5px 5px 5px;
+	height: 6vh;
+	width: 12%;
+	margin: 4% 1% 1% 1%;
 }
 #playpausebtn{
 	background: url(../images/PlayButton.png) no-repeat;
 	background-size: 100% 100%;
-	height: 70px;
-	width: 70px;
-	margin: 5px;
+	height: 12vh;
+	width: 12%;
+	margin: 1%;
 }
 #nextbtn{
 	background: url(../images/NextButton.png) no-repeat;
 	background-size: 100% 100%;
-	height: 35px;
-	width: 70px;
-	margin: 20px 5px 5px 5px;
+	height: 6vh;
+	width: 12%;
+	margin: 4% 1% 1% 1%;
 }
 #mutebtn{
 	background: url(../images/MuteButton.png) no-repeat;
 	background-size: 100% 100%;
-	height: 35px;
-	width: 50px;
-	margin: 20px 5px 5px 5px;
+	height: 6vh;
+	width: 8%;
+	margin: 4% 1% 1% 1%;
 }
 #volumeslider{
-	width: 286px;
-	margin: 35px 5px 5px 5px;
+	width: 45%;
+	margin: 6.5% 1% 1% 1%;
 }
 #currTrack{
-	margin: 5px 5px 5px 1px;
-	padding: 3px;
+	margin: 1% 1% 1% 0%;
+	padding: .5%;
 	clear: both;
 	width: 98.25%;
-	height: 20px;
+	height: 3vh;
 	background: #000;
 	border-bottom: #444 1px solid;
 	text-align: center;
@@ -79,10 +80,10 @@ body{
 	border-radius: 5px;
 }
 #timebox{
-	margin: 5px 5px 5px 1px;
+	margin: 1% 1% 2% 0%;
 	clear: both;
 	float: left;
-	width: 100px;
+	width: 17%;
 	background: #000;
 	border-bottom: #444 1px solid;
 	text-align: center;
@@ -92,13 +93,13 @@ body{
 	border-radius: 5px;
 }
 #seekslider{
-	width: 481px;
-	margin: 10px 5px 5px 5px;
+	width: 80%;
+	margin: 2% 1% 1% 1%;
 }
 input[type='range']{
 	-webkit-appearance: none!important;	
 	background: #000;
-	height: 5px;
+	height: .75vh;
 	border-bottom: #444 1px solid;
 	border-radius: 5px;
 }
@@ -115,41 +116,48 @@ input[type='range']::-moz-range-track {
 input[type='range']::-webkit-slider-thumb{	
 	-webkit-appearance: none !important;
 	background: radial-gradient(#FFF, #333);
-	height: 20px;
-	width: 20px;
+	height: 3vh;
+	width: 3vh;
 	border-radius: 100%;
 	cursor: pointer;
 }
 input[type='range']::-moz-range-thumb{		
 	background: radial-gradient(#FFF, #333);
-	height: 20px;
-	width: 20px;
+	height: 3vh;
+	width: 3vh;
 	border-radius: 100%;
 	cursor: pointer;
 }
 input[type='range']::-ms-thumb{
 	-webkit-appearance: none !important;
 	background: radial-gradient(#FFF, #333);
-	height: 20px;
-	width: 20px;
+	height: 3vh;
+	width: 3vh;
 	border-radius: 100%;
 	cursor: pointer;
 }
 #oscilloscope{
-	height: 127px;
+	height: 20vh;
 	width: 99.5%;
 	background: #000;
 	border-bottom: #444 1px solid;	
 	border-radius: 5px;
 }
-#playlist{	
-	width: 610px;
-	height: auto;
+#playlist{
+	display: block;
+	float: right;
+	width: 46.5%;
+	height: 94vh;
 	background: #BAE2B3;
 	font-size: 16px;
 	border: 5px solid #000;
 	border-radius: 5px;	
-	margin: 10px;
+	margin: 1% 1%;
+	overflow-y: scroll;
+}
+#playlistheader{	
+	width: 100%;
+	margin-top: 0%;
 }
 #playlisttitle {
 	text-align: center;
@@ -157,19 +165,18 @@ input[type='range']::-ms-thumb{
 	font-size: 24px;
 	color: #fff;
 	background: #000;
-	padding-bottom: 10px;
-	
+	padding-bottom: 2%;	
 }
 #tracktitle{
 	display: block;
 	font-size: 18px;
-	padding: 5px;
+	padding: 1%;	
 }
 #tracktitle:nth-child(odd){
 	background: #C1C9C3;
 }
 #tracktitle input{
-	margin-top: 8px;
+	margin-top: 1.5%;
 }
 .checkbox{
 	display: inline-block;
@@ -177,11 +184,12 @@ input[type='range']::-ms-thumb{
 }
 #tracktitle p{
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 3%;
 	width: 75%;
-	padding: 5px;
+	padding: .5%;
 	border-radius: 5px;
 	cursor: pointer;
+	overflow-x: hidden;
 }
 #tracktitle a{
 	display: inline-block;
@@ -195,8 +203,8 @@ input[type='range']::-ms-thumb{
 	cursor: pointer;
 	float: left;
 	font-size: 16px;
-	margin: 3px 5px 5px 5px;
-	padding: 2px;
+	margin: .5% 1% 1% 1%;
+	padding: .5%;
 	outline: none;
 	border-radius: 5px;
 	background: #000;
@@ -206,241 +214,371 @@ input[type='range']::-ms-thumb{
 	cursor: pointer;
 	float: right;
 	font-size: 16px;
-	margin: 3px 5px 5px 5px;
-	padding: 2px;
+	margin: .5% 1% 1% 1%;
+	padding: .5%;
 	outline: none;
 	border-radius: 5px;
 	background: #000;
 	color: #FFF;
 }
 
-/* Responsive for mobile */
-
-@media (max-width: 600px) {
-	body{
-		width: 100%;
-	}
-	.audio-player{		
-		width: 90%;		
-		margin: 10px auto;
-	}
-	#prevbtn{
-		width: 15%;		
-	}
-	#playpausebtn{
-		width: 15%;
-	}
-	#nextbtn{		
-		width: 15%;		
-	}
-	#mutebtn{		
-		width: 15%;		
-	}
-	#volumeslider{
-		width: 30%;		
-	}
-	#currTrack{		
-		width: 98%;		
-	}
-	#timebox{		
-		width: 25%;		
+/************************* Responsive for mobile********************************/
+@media (max-width: 1100px) {
+	#volumeslider{		
+		margin-top: 7%;
+	}	
+	#timebox{
+		width: 30%;
 	}
 	#seekslider{
-		width: 72%;		
+		width: 67%;		
+	}	
+}
+
+@media (max-width: 1000px) {
+	#volumeslider{		
+		margin-top: 7.5%;
 	}
-	#oscilloscope{		
-		width: 99%;
+	#tracktitle p{
+		width: 70%;
+	}	
+}
+@media (max-width: 900px) {
+	#volumeslider{		
+		margin-top: 8%;
 	}
-	#playlist{		
-		width: 92%;
-		margin: 10px auto;
-		height: 700px;
-		overflow:scroll;
+	#seekslider{		
+		margin-top: 2.5%;
+	}		
+}
+@media (max-width: 850px) {
+	#volumeslider{		
+		margin-top: 8.5%;
 	}	
 	#tracktitle p{
-		width: 75%;		
-		
+		width: 67%;
+	}	
+}
+@media (max-width: 800px) {
+	#prevbtn{	
+		margin-top: 6%;
 	}
+	#nextbtn{
+		margin-top: 6%;
+	}
+	#mutebtn{
+		margin-top: 6%;
+	}
+	#volumeslider{		
+		margin-top: 10.5%;
+	}
+}
+@media (max-width: 750px) {
+	#volumeslider{		
+		margin-top: 11%;
+	}
+	#seekslider{		
+		margin-top: 3%;
+	}
+	#tracktitle p{
+		width: 65%;
+	}	
+}
+@media (max-width: 700px) {
+	#volumeslider{		
+		margin-top: 11.5%;
+	}	
+	#tracktitle p{
+		width: 62%;
+	}	
+}
+@media (max-width: 650px) {
+	#currTrack{
+		font-size: 12px;
+	}
+	#timebox{
+		width: 35%;
+		font-size: 12px;
+	}
+	#seekslider{
+		width: 62%;
+	}
+	#playlist{
+		font-size: 14px;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 16px;
+	}
+	#createplaylist{		
+		font-size: 14px;		
+	}
+	#shuffle{		
+		font-size: 14px;		
+	}
+}
+/**********************************Portait*********************************/
+@media (max-width: 600px) and (orientation: portrait){
+	.audio-player{
+		float: none;
+		width: 90%;
+		margin: 1% auto;
+	}
+	#prevbtn{	
+		margin-top: 4%;
+	}
+	#nextbtn{
+		margin-top: 4%;
+	}
+	#mutebtn{
+		margin-top: 4%;
+	}
+	#volumeslider{		
+		margin-top: 7%;
+	}	
+	#currTrack{
+		font-size: 14px;
+	}
+	#timebox{
+		width: 17%;
+		font-size: 14px;
+	}
+	#seekslider{
+		width: 80%;
+		margin-top: 2%;
+	}
+	#playlist{
+		float: none;
+		width: 90%;
+		height: 49vh;
+		margin: 2% auto;
+		font-size: 16px;
+	}
+	#playlisttitle {
+		font-size: 24px;
+	}
+	#tracktitle{
+		font-size: 18px;
+	}
+	#tracktitle p{
+		width: 70%;
+	}
+	#createplaylist{		
+		font-size: 16px;		
+	}
+	#shuffle{		
+		font-size: 16px;		
+	}
+}
+@media (max-width: 575px) and (orientation: portrait){
+	#timebox{
+		width: 30%;
+	}
+	#seekslider{
+		width: 67%;
+	}
+}
+@media (max-width: 550px) and (orientation: portrait){
+	#prevbtn{	
+		margin-top: 4.5%;
+	}
+	#nextbtn{
+		margin-top: 4.5%;
+	}
+	#mutebtn{
+		margin-top: 4.5%;
+	}
+	#volumeslider{		
+		margin-top: 7.5%;
+	}	
+	#tracktitle p{
+		width: 70%;
+	}	
+}
+@media (max-width: 500px) and (orientation: portrait){
+	#volumeslider{		
+		margin-top: 8%;
+	}	
+	#seekslider{		
+		margin-top: 2.5%;
+	}	
+}
+@media (max-width: 450px) and (orientation: portrait){
+	#prevbtn{	
+		margin-top: 5%;
+	}
+	#nextbtn{
+		margin-top: 5%;
+	}
+	#mutebtn{
+		margin-top: 5%;
+	}
+	#volumeslider{		
+		margin-top: 9%;
+	}
+	#tracktitle p{
+		width: 68%;
+	}
+}
+@media (max-width: 400px) and (orientation: portrait){
+	#prevbtn{	
+		margin-top: 5.5%;
+	}
+	#nextbtn{
+		margin-top: 5.5%;
+	}
+	#mutebtn{
+		margin-top: 5.5%;
+	}
+	#volumeslider{		
+		margin-top: 10%;
+	}		
+	#seekslider{		
+		margin-top: 3%;
+	}
+	#tracktitle p{
+		width: 65%;
+	}
+}
+@media (max-width: 375px) and (orientation: portrait){
+	#prevbtn{	
+		margin-top: 6%;
+	}
+	#nextbtn{
+		margin-top: 6%;
+	}
+	#mutebtn{
+		margin-top: 6%;
+	}
+	#volumeslider{		
+		margin-top: 10.5%;
+	}	
+	#currTrack{
+		font-size: 12px;
+	}
+	#timebox{		
+		font-size: 12px;
+	}
+	#seekslider{
+		margin-top: 2.5%;
+	}
+	#playlist{		
+		font-size: 14px;
+	}
+	#playlisttitle {
+		font-size: 20px;
+	}
+	#tracktitle{
+		font-size: 16px;
+	}
+	#tracktitle p{
+		width: 63%;
+	}
+	#createplaylist{		
+		font-size: 14px;
+		padding-bottom: 1%;
+	}
+	#shuffle{		
+		font-size: 14px;
+		padding-bottom: 1%;
+	}
+}
+@media (max-width: 350px) and (orientation: portrait){
+	#prevbtn{	
+		margin-top: 6.5%;
+	}
+	#nextbtn{
+		margin-top: 6.5%;
+	}
+	#mutebtn{
+		margin-top: 6.5%;
+	}
+	#volumeslider{		
+		margin-top: 12%;
+	}
+}
+
+/*********************************** Landscape **************************************/
+@media (max-width: 800px) and (orientation: landscape){
+	#prevbtn{	
+		margin-top: 4%;
+	}
+	#nextbtn{
+		margin-top: 4%;
+	}
+	#mutebtn{
+		margin-top: 4%;
+	}
+	#volumeslider{		
+		margin-top: 7.5%;
+	}
+	#seekslider{
+		margin-top: 3%;
+	}
+}
+@media (max-width: 700px) and (orientation: landscape){
 	
 }
-
-@media (max-width: 450px) {
-	body{
-		width: 100%;
+@media (max-width: 600px) and (orientation: landscape){	
+	#prevbtn{	
+		margin-top: 5.5%;
 	}
-	.audio-player{		
-		width: 90%;		
-		margin: 10px auto;
+	#nextbtn{
+		margin-top: 5.5%;
 	}
-	#prevbtn{
-		width: 15%;		
+	#mutebtn{
+		margin-top: 5.5%;
 	}
-	#playpausebtn{
-		width: 15%;
+	#volumeslider{		
+		margin-top: 8%;
 	}
-	#nextbtn{		
-		width: 15%;		
+	#tracktitle p{
+		width: 58%;
 	}
-	#mutebtn{		
-		width: 15%;		
+}
+@media (max-width: 500px) and (orientation: landscape){	
+	#prevbtn{	
+		margin-top: 5%;
 	}
-	#volumeslider{
-		width: 25.5%;		
+	#nextbtn{
+		margin-top: 5%;
 	}
-	#currTrack{		
-		width: 97%;		
+	#mutebtn{
+		margin-top: 5%;
+	}
+	#volumeslider{		
+		margin-top: 8.5%;
+	}
+	#currTrack{
+		font-size: 12px;
 	}
 	#timebox{		
-		width: 30%;		
-	}
-	#seekslider{
-		width: 65%;		
-	}
-	#oscilloscope{		
-		width: 99%;
-	}
+		font-size: 12px;
+	}	
 	#playlist{		
-		width: 92.5%;
-		height: 400px;
-		overflow:scroll;
+		font-size: 14px;
 	}
 	#playlisttitle {
 		font-size: 20px;
 	}
 	#tracktitle{
-		font-size: 14px;		
-	}	
+		font-size: 16px;
+	}
 	#tracktitle p{
-		width: 65%;		
-		margin-left: 1%;
+		width: 55%;
 	}
-	#createplaylist, #shuffle{
+	#playlisttitle{
+		height: 13vh;
+	}
+	#createplaylist{		
 		font-size: 14px;
-		margin: 2px 7px 7px 7px;
+		padding-bottom: 1%;
+		width: 25%;
 	}
-}
-
-@media (max-width: 400px) {
-	body{
-		width: 100%;
-	}
-	.audio-player{		
-		width: 90%;		
-		margin: 10px auto;
-	}
-	#prevbtn{
-		width: 15%;		
-	}
-	#playpausebtn{
-		width: 15%;
-	}
-	#nextbtn{		
-		width: 15%;		
-	}
-	#mutebtn{		
-		width: 15%;		
-	}
-	#volumeslider{
-		width: 25.5%;		
-	}
-	#currTrack{		
-		width: 97%;		
-	}
-	#timebox{		
-		width: 30%;		
-	}
-	#seekslider{
-		width: 65%;		
-	}
-	#oscilloscope{		
-		width: 99%;
-	}
-	#playlist{		
-		width: 92.5%;
-		height: 335px;
-		overflow:scroll;
-	}
-	#playlisttitle {
-		font-size: 20px;
-	}
-	#tracktitle{
-		font-size: 14px;		
+	#shuffle{		
+		font-size: 14px;
+		width: 25%;
 	}	
-	#tracktitle p{
-		width: 65%;		
-		margin-left: 1%;
-	}
-	#createplaylist, #shuffle{
-		font-size: 14px;
-		margin: 2px 7px 7px 7px;
-	}
-}
-
-@media (max-width: 375px) {
-	#oscilloscope{
-		height: 100px;
-		width: 98%;
-	}
-	#volumeslider{
-		width: 24%;		
-	}
-}
-
-@media (max-width: 350px) {
-	body{
-		width: 100%;
-	}
-	.audio-player {	
-		width: 85%;
-		height: 200px;
-		margin: 10px auto;
-	}
-	#prevbtn{
-		width: 15%;		
-	}
-	#playpausebtn{
-		width: 15%;		
-	}
-	#nextbtn{		
-		width: 15%;		
-	}
-	#mutebtn{		
-		width: 15%;		
-	}
-	#volumeslider{
-		width: 21%;		
-	}
-	#currTrack{		
-		width: 95%;		
-	}
-	#timebox{		
-		width: 35%;		
-	}
-	#seekslider{
-		width: 58.5%;		
-	}
-	#oscilloscope{
-		height: 60px;
-		width: 98%;
-	}
-	#playlist{		
-		width: 88%;
-		margin: 10px auto;
-		height: 220px;
-		overflow:scroll;
-	}
-	#playlisttitle {
-		font-size: 20px;
-	}
-	#tracktitle{
-		font-size: 14px;		
-	}	
-	#tracktitle p{
-		width: 65%;		
-		margin-left: 1%;
-	}
-	#createplaylist, #shuffle{
-		font-size: 14px;
-		margin: 2px 7px 7px 7px;
-	}
 }
